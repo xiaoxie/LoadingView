@@ -1,6 +1,7 @@
 ## LoadingLayout
 
-方便的切换到加载中，空页面，出错页面和内容页面
+APP经常有这样的情景，加载页面时不同的状态给用户展示不同的页面，让用户减少等待的焦虑。
+为了方便的切换到加载中、空页面、出错页面、重试、内容页面 几种场景 。
 
 ![效果图](/demo/device-2015-12-25-184234.png)
 
@@ -38,7 +39,6 @@ findViewById(R.id.btn_loading).setOnClickListener((view) -> loadingLayout.showLo
 ```
 loadingLayout.setOnRetryClickListener((view) -> loadingLayout.showLoading());
 ```
-
 
 
 ## License
