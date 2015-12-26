@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.jlb.mobile.loadingview.library.LoadingLayout;
+import com.jlb.mobile.loadingview.library.AloadingView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Action","Action") ;
                 }).show());
 
-        final LoadingLayout loadingLayout = (LoadingLayout) findViewById(R.id.loadingview);
+        final AloadingView loadingLayout = (AloadingView) findViewById(R.id.loadingview);
         findViewById(R.id.btn_content).setOnClickListener((view) -> loadingLayout.showContent());
         findViewById(R.id.btn_error).setOnClickListener((view) -> loadingLayout.showError());
         findViewById(R.id.btn_empty).setOnClickListener((view) -> loadingLayout.showEmpty());

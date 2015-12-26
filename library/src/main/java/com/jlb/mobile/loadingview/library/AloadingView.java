@@ -10,29 +10,29 @@ import android.widget.FrameLayout;
 /**
  * Loading view
  */
-public class LoadingLayout extends FrameLayout {
+public class AloadingView extends FrameLayout {
 
-    private int emptyView, errorView, loadingView;
+    private int emptyView, errorView, loadingView, contentView;
     private OnClickListener onRetryClickListener;
     private OnClickListener onEmptyClickListener;
 
-    public LoadingLayout(Context context) {
+    public AloadingView(Context context) {
         this(context, null);
     }
 
-    public LoadingLayout(Context context, AttributeSet attrs) {
+    public AloadingView(Context context, AttributeSet attrs) {
         this(context, attrs, -1);
     }
 
-    public LoadingLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AloadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.LoadingLayout, 0, 0);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AloadingView, 0, 0);
         try {
-            emptyView = a.getResourceId(R.styleable.LoadingLayout_emptyView, R.layout.loading_empty_view);
-            errorView = a.getResourceId(R.styleable.LoadingLayout_errorView, R.layout.loading_error_view);
-            loadingView = a.getResourceId(R.styleable.LoadingLayout_loadingView, R.layout.loading_view);
-
+            emptyView = a.getResourceId(R.styleable.AloadingView_emptyView, R.layout.aloading_empty_view);
+            errorView = a.getResourceId(R.styleable.AloadingView_errorView, R.layout.aloading_error_view);
+            loadingView = a.getResourceId(R.styleable.AloadingView_loadingView, R.layout.aloading_view);
+            contentView = a.getResourceId(R.styleable.AloadingView_contentView, 0);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             inflater.inflate(emptyView, this, true);  // 0
             inflater.inflate(errorView, this, true); // 1
@@ -107,7 +107,7 @@ public class LoadingLayout extends FrameLayout {
     public void showContent() {
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
-            if (i == 3) {
+            if (i == 3 || child.getId() == contentView) {
                 child.setVisibility(VISIBLE);
             } else {
                 child.setVisibility(GONE);

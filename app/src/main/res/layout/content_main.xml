@@ -44,12 +44,16 @@
             android:textSize="10sp"
             android:text="content" />
     </LinearLayout>
-    <com.jlb.mobile.loadingview.library.LoadingLayout
+    <com.jlb.mobile.loadingview.library.AloadingView
         android:id="@+id/loadingview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <include layout="@layout/content_view" />
-    </com.jlb.mobile.loadingview.library.LoadingLayout>
+        android:layout_weight="1"
+        app:contentView="@id/aContentView">
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:background="#ff8115" />-->
+        <include android:id="@id/aContentView" layout="@layout/content_view" />
+    </com.jlb.mobile.loadingview.library.AloadingView>
 </LinearLayout>
