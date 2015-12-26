@@ -12,15 +12,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
-    <com.jlb.mobile.loadingview.library.LoadingLayout
-        android:id="@+id/loadingview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <include layout="@layout/content_view" />
-    </com.jlb.mobile.loadingview.library.LoadingLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
@@ -53,4 +44,12 @@
             android:textSize="10sp"
             android:text="content" />
     </LinearLayout>
+    <com.jlb.mobile.loadingview.library.LoadingLayout
+        android:id="@+id/loadingview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include layout="@layout/content_view" />
+    </com.jlb.mobile.loadingview.library.LoadingLayout>
 </LinearLayout>
