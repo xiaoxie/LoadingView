@@ -96,6 +96,10 @@ loadingLayout.setOnRetryClickListener((view) -> loadingLayout.showLoading());
 loadingLayout.setOnEmptyClickListener((view) -> loadingLayout.showLoading());
 ```
 
+### 7、自定义 View
+
+自定义 aloading_view.xml、aloading_error_view.xml、aloading_empty_view.xml，保持文件名和 Button ID 不变即可。
+    
 
 ## License
 
