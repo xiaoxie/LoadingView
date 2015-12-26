@@ -48,7 +48,7 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
     </com.jlb.mobile.loadingview.library.LoadingLayout>
     ```
 
-    layout/ContainView.xml 如下：
+#### layout/ContainView.xml 如下：
 
     ```
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
