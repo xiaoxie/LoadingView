@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.jlb.mobile.loadingview.library.AloadingView;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

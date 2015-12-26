@@ -1,4 +1,4 @@
-package com.jlb.mobile.loadingview.library;
+package com.jlb.mobile.loadingview;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

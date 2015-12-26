@@ -12,19 +12,19 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
 ### 1、默认把第一个子 View 当做内容视图，其他的子 View 会被忽略
 
 ```
-<com.jlb.mobile.loadingview.library.LoadingLayout
+<com.jlb.mobile.loadingview.AloadingView
     android:id="@+id/loading_layout"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1">
         <include layout="@layout/content_view" />
-</<com.jlb.mobile.loadingview.library.LoadingLayout>
+</<com.jlb.mobile.loadingview.AloadingView>
 ```
 
 ### 2、存在多个子 View 时，默认把第一个子 View 当做内容视图，其他的子 View 会被忽略
 
 ```
-<com.jlb.mobile.loadingview.library.LoadingLayout
+<com.jlb.mobile.loadingview.LoadingLayout
     android:id="@+id/loading_layout"
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -33,19 +33,19 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
         <include layout="@layout/content_view2" />  //不显示
         <include layout="@layout/content_view3" />  //不显示
         <include layout="@layout/content_view4" />  //不显示
-</com.jlb.mobile.loadingview.library.LoadingLayout>
+</com.jlb.mobile.loadingview.AloadingView>
 ```
 
 ### 3、存在多个子 View 时，推荐添加一个 ContainView 包裹，用方法类似ScrollView
 
     ```
-    <com.jlb.mobile.loadingview.library.LoadingLayout
+    <com.jlb.mobile.loadingview.AloadingView
         android:id="@+id/loading_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
             <include layout="@layout/ContainView" />  //显示
-    </com.jlb.mobile.loadingview.library.LoadingLayout>
+    </com.jlb.mobile.loadingview.AloadingView>
     ```
 
 #### layout/ContainView.xml 如下：
@@ -65,7 +65,7 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
 ### 4、也可以指定要显示的contentView  
 
 ```
-<com.jlb.mobile.loadingview.library.LoadingLayout 
+<com.jlb.mobile.loadingview.AloadingView 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loading_layout"
     android:layout_width="match_parent"
@@ -76,13 +76,13 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
         <include layout="@layout/content_view2" />  //不显示
         <include layout="@layout/content_view3" />  //显示
         <include layout="@layout/content_view4" />  //不显示
-</com.jlb.mobile.loadingview.library.LoadingLayout>
+</com.jlb.mobile.loadingview.AloadingView>
 ```
 
 ### 5、切换到不同 View 的代码如下：
 
 ```
-final LoadingLayout loadingLayout = (LoadingLayout) findViewById(R.id.loading_layout);
+final AloadingView loadingLayout = (AloadingView) findViewById(R.id.loading_layout);
 findViewById(R.id.btn_content).setOnClickListener((view) -> loadingLayout.showContent());
 findViewById(R.id.btn_error).setOnClickListener((view) -> loadingLayout.showError());
 findViewById(R.id.btn_empty).setOnClickListener((view) -> loadingLayout.showEmpty());
