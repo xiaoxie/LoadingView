@@ -50,10 +50,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         app:contentView="@id/aContentView">
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="10dp"-->
-            <!--android:background="#ff8115" />-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ff8115" />
         <include android:id="@id/aContentView" layout="@layout/content_view" />
     </com.jlb.mobile.loadingview.library.AloadingView>
 </LinearLayout>
