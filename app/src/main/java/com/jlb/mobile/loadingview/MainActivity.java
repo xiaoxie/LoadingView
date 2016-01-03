@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         final AloadingView loadingLayout = (AloadingView) findViewById(R.id.loadingview);
         findViewById(R.id.btn_content).setOnClickListener((view) -> loadingLayout.showContent());
-        findViewById(R.id.btn_error).setOnClickListener((view) -> loadingLayout.showError());
+        findViewById(R.id.btn_error).setOnClickListener((view) -> loadingLayout.showError("商品信息加载失败",R.mipmap.ic_launcher));
         findViewById(R.id.btn_empty).setOnClickListener((view) -> loadingLayout.showEmpty());
         findViewById(R.id.btn_loading).setOnClickListener((view) -> loadingLayout.showLoading());
 
