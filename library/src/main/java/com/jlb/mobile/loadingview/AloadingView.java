@@ -2,10 +2,13 @@ package com.jlb.mobile.loadingview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jlb.mobile.loadingview.library.R;
 
@@ -52,13 +55,13 @@ public class AloadingView extends FrameLayout {
             getChildAt(i).setVisibility(GONE);
         }
 
-        findViewById(R.id.btn_empty_retry).setOnClickListener(v -> {
+        findViewById(R.id.btn_retry).setOnClickListener(v -> {
             if (null != onEmptyClickListener) {
                 onEmptyClickListener.onClick(v);
             }
         });
 
-        findViewById(R.id.btn_error_retry).setOnClickListener(v -> {
+        findViewById(R.id.btn_retry).setOnClickListener(v -> {
             if (null != onRetryClickListener) {
                 onRetryClickListener.onClick(v);
             }
@@ -74,9 +77,13 @@ public class AloadingView extends FrameLayout {
     }
 
     public void showEmpty() {
+        this.showEmpty(null,0);
+    }
+    public void showEmpty(String info, int resId) {
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (i == 0) {
+                setCostomInfo(info, resId, child);
                 child.setVisibility(VISIBLE);
             } else {
                 child.setVisibility(GONE);
@@ -84,10 +91,28 @@ public class AloadingView extends FrameLayout {
         }
     }
 
+    private void setCostomInfo(String info, int resId, View child) {
+        if (!TextUtils.isEmpty(info)) {
+            TextView tv = (TextView) child.findViewById(R.id.aload_info);
+            if (tv != null)
+                tv.setText(info);
+        }
+        if (resId > 0) {
+            ImageView iv = (ImageView) child.findViewById(R.id.aload_icon);
+            if (iv != null)
+                iv.setImageResource(resId);
+        }
+    }
+
     public void showError() {
+        this.showError(null,0);
+    }
+
+    public void showError(String info, int resId) {
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (i == 1) {
+                setCostomInfo(info, resId, child);
                 child.setVisibility(VISIBLE);
             } else {
                 child.setVisibility(GONE);
@@ -96,6 +121,10 @@ public class AloadingView extends FrameLayout {
     }
 
     public void showLoading() {
+        this.showLoading(null,0);
+    }
+
+    public void showLoading(String info, int resId) {
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (i == 2) {

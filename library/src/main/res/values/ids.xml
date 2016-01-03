@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <item name="btn_empty_retry" type="id"/>
-  <item name="btn_error_retry" type="id"/>
+  <item name="aload_icon" type="id">aload_icon</item>
+  <item name="aload_info" type="id">aload_info</item>
+  <item name="btn_retry" type="id">btn_retry</item>
 </resources>

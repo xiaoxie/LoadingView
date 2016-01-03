@@ -38,30 +38,31 @@ APP 中经常有这样的情景，加载页面时不同的状态给用户展示�
 
 ### 3、存在多个子 View 时，推荐添加一个 ContainView 包裹，用方法类似ScrollView
 
-    ```
-    <com.jlb.mobile.loadingview.AloadingView
-        android:id="@+id/loading_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-            <include layout="@layout/ContainView" />  //显示
-    </com.jlb.mobile.loadingview.AloadingView>
-    ```
+```
+<com.jlb.mobile.loadingview.AloadingView
+    android:id="@+id/loading_layout"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+        <include layout="@layout/ContainView" />  //显示
+</com.jlb.mobile.loadingview.AloadingView>
+```
 
 #### layout/ContainView.xml 如下：
 
-    ```
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-            <include layout="@layout/content_view1" /> 
-            <include layout="@layout/content_view2" />
-            <include layout="@layout/content_view3" />
-            <include layout="@layout/content_view4" />
-    </LinearLayout>
-    ```
+```
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        <include layout="@layout/content_view1" /> 
+        <include layout="@layout/content_view2" />
+        <include layout="@layout/content_view3" />
+        <include layout="@layout/content_view4" />
+</LinearLayout>
+```
+
 ### 4、也可以指定要显示的contentView  
 
 ```

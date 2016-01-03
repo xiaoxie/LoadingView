@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loading_view"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
+    android:gravity="center">
+    <ImageView
+        android:id="@id/aload_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_no_network" />
     <TextView
+        android:id="@id/aload_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自定义出错页！"
-        android:textSize="14sp" />
-
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_19"
+        android:text="数据加载失败,请刷新重试"
+        android:textColor="@color/text_color_emptyview"
+        android:textSize="@dimen/textsize_11" />
     <Button
-        android:id="@id/btn_error_retry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="重新加载"
-        />
+        android:id="@id/btn_retry"
+        android:background="@drawable/common_btn_bg_selector_white"
+        android:layout_width="122dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="@dimen/spacing_18"
+        android:textColor="@color/text_color_emptyview"
+        android:text="刷新重试"
+        android:textSize="@dimen/textsize_12" />
 </LinearLayout>

@@ -3,4 +3,10 @@
   <dimen name="activity_horizontal_margin">5dp</dimen>
   <dimen name="activity_vertical_margin">5dp</dimen>
   <dimen name="fab_margin">15dp</dimen>
+  <dimen name="spacing_18">18dp</dimen>
+  <dimen name="textsize_11">11sp</dimen>
+  <dimen name="textsize_12">12sp</dimen>
+  <dimen name="spacing_19">19dp</dimen>
+  <dimen name="spacing_5">5dp</dimen>
+  <dimen name="spacing_0.5">0.5dp</dimen>
 </resources>
