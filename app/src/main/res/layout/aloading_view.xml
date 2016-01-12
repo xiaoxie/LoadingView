@@ -4,17 +4,22 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
-    <ProgressBar
-        style="@android:style/Widget.ProgressBar.Small"
+    android:gravity="center">
+    <ImageView
+        android:id="@id/aload_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="4dp" />
+        android:scaleType="centerInside"/>
+    <!--<ProgressBar-->
+    <!--style="@android:style/Widget.ProgressBar.Small"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginRight="4dp" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  自定义 正在加载..."
-        android:textSize="14sp" />
+    <!--<TextView-->
+    <!--android:id="@id/aload_info"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="  正在加载..."-->
+    <!--android:textSize="14sp" />-->
 </LinearLayout>

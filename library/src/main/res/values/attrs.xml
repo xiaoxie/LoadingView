@@ -7,6 +7,7 @@
     <attr name="retryView" format="reference" />
     <attr name="emptyView" format="reference" />
     <attr name="contentView" format="reference" />
+    <attr name="animation" format="reference" />
   </declare-styleable>
 
 </resources>

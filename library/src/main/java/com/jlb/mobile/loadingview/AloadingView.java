@@ -2,6 +2,7 @@ package com.jlb.mobile.loadingview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.AnimationDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,11 +14,12 @@ import android.widget.TextView;
 import com.jlb.mobile.loadingview.library.R;
 
 /**
- * Loading view
+ * @author wqr
+ * @des Loading view
  */
 public class AloadingView extends FrameLayout {
 
-    private int emptyView, errorView, loadingView, contentView;
+    private int emptyView, errorView, loadingView, contentView, animation;
     private OnClickListener onRetryClickListener;
     private OnClickListener onEmptyClickListener;
 
@@ -38,6 +40,7 @@ public class AloadingView extends FrameLayout {
             errorView = a.getResourceId(R.styleable.AloadingView_errorView, R.layout.aloading_error_view);
             loadingView = a.getResourceId(R.styleable.AloadingView_loadingView, R.layout.aloading_view);
             contentView = a.getResourceId(R.styleable.AloadingView_contentView, 0);
+            animation = a.getResourceId(R.styleable.AloadingView_animation, 0);
             LayoutInflater inflater = LayoutInflater.from(getContext());
             inflater.inflate(emptyView, this, true);  // 0
             inflater.inflate(errorView, this, true); // 1
@@ -76,14 +79,24 @@ public class AloadingView extends FrameLayout {
         this.onEmptyClickListener = onEmptyClickListener;
     }
 
+    /**
+     * 显示默认空页面
+     */
     public void showEmpty() {
-        this.showEmpty(null,0);
+        this.showEmpty(null, 0);
     }
+
+    /**
+     * 显示指定内容的空页面
+     *
+     * @param info
+     * @param resId
+     */
     public void showEmpty(String info, int resId) {
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (i == 0) {
-                setCostomInfo(info, resId, child);
+                setEmptyInfoCostom(info, resId, child);
                 child.setVisibility(VISIBLE);
             } else {
                 child.setVisibility(GONE);
@@ -91,7 +104,86 @@ public class AloadingView extends FrameLayout {
         }
     }
 
-    private void setCostomInfo(String info, int resId, View child) {
+    /**
+     * 显示错误页
+     */
+    public void showError() {
+        this.showError(null, 0);
+    }
+
+    /**
+     * 显示错误页，指定内容
+     *
+     * @param info
+     * @param resId
+     */
+    public void showError(String info, int resId) {
+        for (int i = 0; i < this.getChildCount(); i++) {
+            View child = this.getChildAt(i);
+            if (i == 1) {
+                setEmptyInfoCostom(info, resId, child);
+                child.setVisibility(VISIBLE);
+            } else {
+                child.setVisibility(GONE);
+            }
+        }
+    }
+
+    /**
+     * 显示错误页，指定内容、是否显示重试按钮
+     *
+     * @param info
+     * @param resId
+     * @param showRetryButton
+     */
+    public void showError(String info, int resId, boolean showRetryButton) {
+        showError(info, resId);
+        View retry = findViewById(R.id.btn_retry);
+        if (retry != null) retry.setVisibility(GONE);
+    }
+
+    /**
+     * 显示加载页
+     */
+    public void showLoading() {
+        this.showLoading(null, 0);
+    }
+
+    /**
+     * 显示加载页，指定内容
+     *
+     * @param info
+     * @param resId
+     */
+    public void showLoading(String info, int resId) {
+        for (int i = 0; i < this.getChildCount(); i++) {
+            View child = this.getChildAt(i);
+            if (i == 2) {
+                child.setVisibility(VISIBLE);
+                ImageView iv = (ImageView) child.findViewById(R.id.aload_icon);
+                if (iv != null)
+                    startAnimation(iv);
+            } else {
+                child.setVisibility(GONE);
+            }
+        }
+    }
+
+    /**
+     * 显示 contentView
+     */
+    public void showContent() {
+        for (int i = 0; i < this.getChildCount(); i++) {
+            View child = this.getChildAt(i);
+            if (i == 3 || child.getId() == contentView) {
+                child.setVisibility(VISIBLE);
+            } else {
+                child.setVisibility(GONE);
+            }
+        }
+    }
+
+    private void setEmptyInfoCostom(String info, int resId, View child) {
         if (!TextUtils.isEmpty(info)) {
             TextView tv = (TextView) child.findViewById(R.id.aload_info);
             if (tv != null)
@@ -104,45 +196,13 @@ public class AloadingView extends FrameLayout {
         }
     }
 
-    public void showError() {
-        this.showError(null,0);
-    }
-
-    public void showError(String info, int resId) {
-        for (int i = 0; i < this.getChildCount(); i++) {
-            View child = this.getChildAt(i);
-            if (i == 1) {
-                setCostomInfo(info, resId, child);
-                child.setVisibility(VISIBLE);
-            } else {
-                child.setVisibility(GONE);
-            }
+    private void startAnimation(ImageView iv) {
+        AnimationDrawable animDrawable = (AnimationDrawable) iv.getDrawable();
+        if (null == animDrawable) {
+            iv.setImageResource(animation == 0 ? R.anim.loading : animation);
+            animDrawable = (AnimationDrawable) iv.getDrawable();
         }
-    }
-
-    public void showLoading() {
-        this.showLoading(null,0);
-    }
-
-    public void showLoading(String info, int resId) {
-        for (int i = 0; i < this.getChildCount(); i++) {
-            View child = this.getChildAt(i);
-            if (i == 2) {
-                child.setVisibility(VISIBLE);
-            } else {
-                child.setVisibility(GONE);
-            }
-        }
-    }
-
-    public void showContent() {
-        for (int i = 0; i < this.getChildCount(); i++) {
-            View child = this.getChildAt(i);
-            if (i == 3 || child.getId() == contentView) {
-                child.setVisibility(VISIBLE);
-            } else {
-                child.setVisibility(GONE);
-            }
-        }
+        iv.clearAnimation();
+        animDrawable.start();
     }
 }
