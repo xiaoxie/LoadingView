@@ -199,7 +199,7 @@ public class AloadingView extends FrameLayout {
     private void startAnimation(ImageView iv) {
         AnimationDrawable animDrawable = (AnimationDrawable) iv.getDrawable();
         if (null == animDrawable) {
-            iv.setImageResource(animation == 0 ? R.anim.loading : animation);
+            iv.setImageResource(animation == 0 ? R.anim.aloading : animation);
             animDrawable = (AnimationDrawable) iv.getDrawable();
         }
         iv.clearAnimation();

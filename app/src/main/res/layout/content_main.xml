@@ -45,15 +45,18 @@
             android:text="content" />
     </LinearLayout>
     <com.jlb.mobile.loadingview.AloadingView
+        xmlns:av="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loadingview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:contentView="@id/aContentView">
+        app:contentView="@id/aContentView"
+        av:animation="@anim/loading" >
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="#ff8115" />
-        <include android:id="@id/aContentView" layout="@layout/content_view" />
+        <include android:id="@id/aContentView"
+            layout="@layout/content_view" />
     </com.jlb.mobile.loadingview.AloadingView>
 </LinearLayout>
